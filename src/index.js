@@ -21,6 +21,7 @@ const nav = document.querySelector('.nav');
 // }
 // document.addEventListener('keydown', escKey);
 
+// Wheel event
 function zoom(event) {
     event.preventDefault();
   
@@ -36,3 +37,29 @@ function zoom(event) {
   let scale = 1;
   const el = document.querySelector('div');
   el.onwheel = zoom;
+
+//   dble click 
+const intro = document.querySelector('.intro');
+
+intro.addEventListener('dblclick', function (evt) {
+  intro.classList.toggle('large');
+});
+
+// load event
+window.onload = function (evt){
+    console.log(`event $(evt.type) fired! Ready to go!`)
+    const heading = document.querySelector('h1')
+    heading.textContent = "Ready to go!"
+    console.log(heading);
+ 
+// Copy Event  
+    window.addEventListener('copy', () => {
+        navigator.clipboard.readText()
+        .then(text => {
+           heading.textContent += text
+        })
+    })
+}
+
+
+
